@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/UI/header";
+import Header from "@/components/UI/layout/header";
 import { Provider } from "@/providers/provider";
 import { siteConfig } from "@/config/site.config";
 import { layoutConfig } from "@/config/layout.config";
+import { ReactNode } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
                                      children,
                                    }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -33,7 +34,7 @@ export default function RootLayout({
     >
     <Provider>
       <Header/>
-      <main className={`h-[calc(100vh-${layoutConfig.footerHeight}-${layoutConfig.headerHeight})] flex flex-col w-full justify-start items-center`}>
+      <main className={`h-[calc(100vh-160px)] flex flex-col w-full justify-start items-center`}>
         {children}
       </main>
       <footer className={`h-[${layoutConfig.footerHeight}] w-full flex justify-center items-center`}>
