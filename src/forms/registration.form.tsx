@@ -1,5 +1,6 @@
 import { Button, Form, Input } from "@heroui/react";
 import { FormEvent, useState } from "react";
+import { registerUser } from "@/actions/register";
 
 type RegistrationFormProps = {
   onClose: () => void;
@@ -19,7 +20,7 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    await registerUser(formData);
 
     onClose();
   };
